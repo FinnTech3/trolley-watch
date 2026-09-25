@@ -20,12 +20,13 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")
 SOURCES = os.path.join(ROOT, "data", "sources")
 RAW = os.path.join(ROOT, "data", "raw")
 
-# January 2021 to January 2025. The price quotes go on to January 2026, but
-# from February 2025 the ONS groups items into new consumption segments whose
-# published indices cannot be rebuilt item by item, and from February 2026 it
-# prices groceries from supermarket scanner data and no longer publishes the
-# quotes at all. So the rebuildable run ends in January 2025.
-MONTHS = [f"{y}{m:02d}" for y in range(2021, 2025) for m in range(1, 13)] + ["202501"]
+# January 2021 to December 2024: four whole years, the food price shock and
+# the year after it. The price quotes go on to January 2026, but from February
+# 2025 the ONS publishes its indices for new consumption segments that pool
+# several items with weights it does not publish, so they cannot be rebuilt
+# item by item. From February 2026 it prices groceries from supermarket scanner
+# data and stops publishing food quotes at all.
+MONTHS = [f"{y}{m:02d}" for y in range(2021, 2025) for m in range(1, 13)]
 
 
 def is_food(item_id: str) -> bool:
@@ -44,6 +45,8 @@ class Quote:
     shop_weight: float
     price: float
     base: float             # the same product's price in January
+    indicator: str          # the collector's note: S sale, R recovery, C comparable replacement, N not comparable...
+    valid_now: bool         # validated this month (codes 3 and 4), with a price this month and in January
     usable: bool            # counted in the index; see `usable` below
 
     @property
@@ -51,17 +54,21 @@ class Quote:
         return self.price / self.base
 
 
-def usable(r: dict) -> bool:
-    """Whether the ONS would count this quote in the item's index.
+def valid_now(r: dict) -> bool:
+    return r["VALIDITY"] in ("3", "4") and float(r["PRICE"] or 0) > 0 and float(r["BASE_PRICE"] or 0) > 0
 
-    Validated this month and in January, with a price in both, and not a
-    non-comparable replacement (indicator N), whose change from January is not
-    a like-for-like price change. The rule was found by rebuilding the
-    published indices, and verify.py checks it still does.
+
+def usable(r: dict) -> bool:
+    """Whether the ONS counts this quote in the item's index.
+
+    Validated this month and in January (codes 3 and 4), with a price in both.
+    A series that started after January has a January price the ONS worked
+    out rather than collected, and is not counted until the next January. The
+    rule was found by rebuilding the published indices, and verify.py checks
+    it still does. It also excludes every non-comparable replacement (N): none
+    has a validated January price.
     """
-    return (r["VALIDITY"] in ("3", "4") and r["BASE_VALIDITY"] in ("3", "4")
-            and r["INDICATOR_BOX"] != "N"
-            and float(r["PRICE"] or 0) > 0 and float(r["BASE_PRICE"] or 0) > 0)
+    return valid_now(r) and r["BASE_VALIDITY"] in ("3", "4")
 
 
 @functools.lru_cache(maxsize=None)
@@ -76,7 +83,7 @@ def _year(year: str) -> dict[str, tuple[Quote, ...]]:
             item=s("ITEM_ID"), shop=s("SHOP_CODE"), region=s("REGION"), cell=s("STRATUM_CELL"),
             start=s("START_DATE"), stratum_weight=float(r["STRATUM_WEIGHT"] or 0),
             shop_weight=float(r["SHOP_WEIGHT"] or 0), price=float(r["PRICE"] or 0),
-            base=float(r["BASE_PRICE"] or 0), usable=usable(r)))
+            base=float(r["BASE_PRICE"] or 0), indicator=s("INDICATOR_BOX"), valid_now=valid_now(r), usable=usable(r)))
     return {m: tuple(q) for m, q in months.items()}
 
 
