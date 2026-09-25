@@ -27,6 +27,7 @@ only ever reported for food as a whole or for large groups of items.
 from __future__ import annotations
 
 import functools
+import math
 from collections.abc import Callable
 
 from . import indices, items as item_kinds, verify
@@ -84,6 +85,47 @@ def food_paths(rank: str = "midpoint", keep: Callable[[str], bool] = comparable)
         within = lambda m, s=s: {i: t[s] for i, t in tier_items(m, rank).items() if s in t and keep(i)}  # noqa: E731
         out[s] = indices.chain(MONTHS, within, weights=weights)
     return out
+
+
+def price_levels(year: int) -> float:
+    """The rejected alternative: compare the prices on offer, not the same products.
+
+    For each item, the geometric mean of every usable price in December over
+    that of every price in January, stacked with the year's weights. It has no
+    regression to the mean, because no quote is followed, but it moves
+    whenever the mix of products priced changes.
+    """
+    w = {i: x for i, x in indices.year_weights(year).items() if comparable(i)}
+    jan = indices.by_item(quotes(f"{year}01"), lambda q: q.valid_now)
+    dec = indices.by_item(quotes(f"{year}12"))
+    num = den = 0.0
+    for item, weight in w.items():
+        if item in jan and item in dec:
+            g = lambda qs: math.exp(sum(math.log(q.price) for q in qs) / len(qs))  # noqa: E731
+            num += weight * g(dec[item]) / g(jan[item])
+            den += weight
+    return num / den - 1
+
+
+def item_thirds(item: str) -> dict[str, float]:
+    """One item's thirds, chained over the whole period: the numbers too noisy to report item by item."""
+    published = item_indices()
+    level = {t: 100.0 for t in indices.TIERS}
+    jan = dict(level)
+    for month in MONTHS[1:]:
+        if month.endswith("01"):
+            link = published[month][item].index / 100
+            level = {t: v * link for t, v in level.items()}
+            jan = dict(level)
+        else:
+            t = tier_items(month)[item]
+            level = {k: jan[k] * t[k] / 100 for k in indices.TIERS}
+    return {t: v / 100 - 1 for t, v in level.items()}
+
+
+def weight_share(keep: Callable[[str], bool], year: int = 2022) -> float:
+    w = indices.year_weights(year)
+    return sum(v for i, v in w.items() if keep(i)) / sum(w.values())
 
 
 def change(path: dict[str, float], start: str, end: str) -> float:
