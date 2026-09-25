@@ -10,6 +10,7 @@ from __future__ import annotations
 import sys
 
 from . import study, verify
+from .names import NAMES
 from .study import change
 
 
@@ -64,7 +65,7 @@ def main() -> int:
         print(line(f"  on {name}'s price", paths, a, b))
 
     items = r["items"]
-    desc = r["descriptions"]
+    desc = {i: f"{NAMES[i].lower()}" for i in items}
     print(f"\nItems priced in every month: {len(items)}")
     rises = sorted(((it[b] / it[a] - 1, i) for i, it in items.items()), reverse=True)
     print("  rose most: " + "; ".join(f"{desc[i]} {pct(x)}" for x, i in rises[:6]))

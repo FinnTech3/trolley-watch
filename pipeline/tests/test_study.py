@@ -65,16 +65,22 @@ def test_mixed_unit_items_are_the_ones_left_out():
     assert all(" OR " in desc[i] or "/" in desc[i] for i in left)
 
 
-def test_item_paths_chain_the_published_item_indices():
-    """Each item's own path, rebuilt within each year, agrees with chaining what the ONS published."""
-    published = item_indices()
-    for item, path in result()["items"].items():
-        jan = level = 100.0
-        for month in MONTHS[1:]:
-            x = published[month][item]
-            if month.endswith("01"):
-                jan = level = level * x.index / 100
-                continue
-            level = jan * x.index / 100
-            if not x.imputed:
-                assert path[month] == pytest.approx(level, abs=0.1), (item, month)
+def test_a_recoded_item_carries_on_from_the_old_code():
+    """Eggs: medium eggs to January 2022, the new eggs item from there."""
+    eggs, published = result()["items"]["211604"], item_indices()
+    level = jan = 100.0
+    for month in MONTHS[1:13]:
+        x = published[month]["211602"]
+        level = (level if month.endswith("01") else jan) * x.index / 100
+        if month.endswith("01"):
+            jan = level
+        assert eggs[month] == pytest.approx(level)
+    assert eggs["202202"] == pytest.approx(eggs["202201"] * published["202202"]["211604"].index / 100)
+
+
+def test_every_item_has_a_name_and_the_everyday_ones_are_there():
+    from trolley.names import EVERYDAY, NAMES
+    items = result()["items"]
+    assert set(items) <= set(NAMES)
+    assert set(EVERYDAY) <= set(items)
+    assert len(EVERYDAY) == len(set(EVERYDAY))

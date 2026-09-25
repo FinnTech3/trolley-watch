@@ -90,31 +90,63 @@ def change(path: dict[str, float], start: str, end: str) -> float:
     return path[end] / path[start] - 1
 
 
+# Items the ONS re-coded during the period, new code: old code. Each pair is
+# the same product under a new description, judged from the descriptions; the
+# old item's path runs to the January the new one starts from, which is how the
+# CPI itself chains its annual basket changes.
+SPLICES = {
+    "211604": "211602",   # eggs per dozen, from February 2022: medium eggs before
+    "212309": "212399",   # new potatoes, February 2022
+    "212310": "212360",   # old white potatoes, February 2022
+    "212311": "212361",   # baking potatoes, February 2022
+    "211410": "211407",   # dairy spread or margarine, February 2023
+    "212736": "212731",   # melon, February 2023
+    "212737": "212728",   # pineapple, February 2023
+    "210707": "210703",   # pork chops, February 2024
+    "212537": "212527",   # pre-packed salad, February 2024
+}
+
+
+def _chain_published(item: str, start: str) -> dict[str, float]:
+    """An item's published index chained from `start` (a January) = 100, for as long as it runs."""
+    published = item_indices()
+    level = {start: 100.0}
+    prev = start
+    for month in MONTHS[MONTHS.index(start) + 1:]:
+        x = published.get(month, {}).get(item)
+        if x is None or x.index is None:
+            break
+        base = level[prev] if month.endswith("01") else level[f"{month[:4]}01"]
+        level[month] = base * x.index / 100
+        prev = month
+    return level
+
+
 @functools.lru_cache(maxsize=None)
 def item_paths() -> dict[str, dict[str, float]]:
-    """Each item's own index, all quotes, January 2021 = 100, for items priced in every month.
+    """Each item's price path, January 2021 = 100, for items priced to December 2024.
 
-    Within each year this is the item index rebuilt from its quotes, which
-    verify.py shows matches the published one; across years it takes the
-    published January change.
+    This is the ONS's own item index, chained: February to December relative
+    to January, each January relative to the December before. verify.py shows
+    the same numbers come back from the quotes wherever the ONS priced the
+    item from quotes; a few items, potatoes in 2021 among them, were priced
+    centrally and have no quotes to rebuild them from. Items new in the 2021
+    basket start from January 2021 prices like everything else.
     """
-    out = {}
     published = item_indices()
-    for item in published[MONTHS[0]]:
-        level = {MONTHS[0]: 100.0}
-        for prev, month in zip(MONTHS, MONTHS[1:]):
-            if month.endswith("01"):
-                link = published.get(month, {}).get(item)
-                if link is None or link.index is None:
-                    break
-                level[month] = level[prev] * link.index / 100
-                continue
-            t = tier_items(month).get(item)
-            if t is None:
-                break
-            level[month] = level[f"{month[:4]}01"] * t["all"] / 100
-        else:
-            out[item] = level
+    out = {}
+    for item in published[MONTHS[1]]:
+        p = _chain_published(item, MONTHS[0])
+        if MONTHS[-1] in p:
+            out[item] = p
+    for new, old in SPLICES.items():
+        before = _chain_published(old, MONTHS[0])
+        first = next(m for m in MONTHS if m.endswith("02") and new in published.get(m, {}))
+        link = f"{first[:4]}01"
+        after = _chain_published(new, link)
+        if link in before and MONTHS[-1] in after:
+            out[new] = {**{m: v for m, v in before.items() if m <= link},
+                        **{m: before[link] * v / 100 for m, v in after.items()}}
     return out
 
 
@@ -126,9 +158,10 @@ def contributions(start: str = MONTHS[0], end: str = MONTHS[-1]) -> list[tuple[s
     """
     paths = item_paths()
     w = indices.year_weights(int(start[:4]))
-    rises = {i: p[end] / p[start] - 1 for i, p in paths.items() if i in w}
-    total = sum(w[i] * r for i, r in rises.items())
-    return sorted(((i, r, w[i] * r / total) for i, r in rises.items()), key=lambda x: -x[2])
+    weight = {i: w.get(i, w.get(SPLICES.get(i, ""), 0.0)) for i in paths}
+    rises = {i: p[end] / p[start] - 1 for i, p in paths.items() if weight[i]}
+    total = sum(weight[i] * r for i, r in rises.items())
+    return sorted(((i, r, weight[i] * r / total) for i, r in rises.items()), key=lambda x: -x[2])
 
 
 def run() -> dict:
