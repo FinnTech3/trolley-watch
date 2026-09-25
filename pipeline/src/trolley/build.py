@@ -57,7 +57,8 @@ def main() -> int:
     data = {
         "months": MONTHS,
         "published": [r["published"][m] for m in MONTHS],
-        "thirds": {s: [r2(r["paths"][s][m]) for m in MONTHS] for s in study.SERIES},
+        # four places, so the app's percentages round the way the report's do
+        "thirds": {s: [round(r["paths"][s][m], 4) for m in MONTHS] for s in study.SERIES},
         "trap": {name: {s: r2(p[s][MONTHS[-1]]) for s in ("cheap", "dear")} for name, p in r["trap"].items()},
         "groups": GROUPS,
         "items": [

@@ -28,8 +28,8 @@ def test_shape(data):
 
 
 def test_headline_numbers(data):
-    last = {k: v[-1] for k, v in data["thirds"].items()}
-    assert last == {"cheap": 138.55, "middle": 135.01, "dear": 129.82, "all": 133.5}
+    rises = {k: round(v[-1] / v[0] * 100 - 100, 1) for k, v in data["thirds"].items()}
+    assert rises == {"cheap": 38.5, "middle": 35.0, "dear": 29.8, "all": 33.5}
     assert data["published"][0] == 103.4 and data["published"][-1] == 137.8
 
 
