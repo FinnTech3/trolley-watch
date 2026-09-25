@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" role="img" aria-label="The gap opened in 2022 and 2023, and closed when inflation did">
+<rect width="1120" height="540" fill="#161614"/>
+<text x="64.0" y="44.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#f3f2ee" text-anchor="start">The gap opened in 2022 and 2023, and closed when inflation did</text>
+<text x="64.0" y="70.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#c3c2b7" text-anchor="start">Rise from January to December each year, by third of the shelf, UK food and non-alcoholic drinks</text>
+<line x1="64.0" y1="420.0" x2="1080.0" y2="420.0" stroke="#3d3d3a" stroke-width="1.0"/>
+<text x="54.0" y="424.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="end">0%</text>
+<line x1="64.0" y1="345.0" x2="1080.0" y2="345.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="54.0" y="349.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="end">5%</text>
+<line x1="64.0" y1="270.0" x2="1080.0" y2="270.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="54.0" y="274.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="end">10%</text>
+<line x1="64.0" y1="195.0" x2="1080.0" y2="195.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="54.0" y="199.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="end">15%</text>
+<line x1="64.0" y1="120.0" x2="1080.0" y2="120.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="54.0" y="124.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="end">20%</text>
+<path d="M128.5,420.0 V362.0 Q128.5,359.0 131.5,359.0 H159.5 Q162.5,359.0 162.5,362.0 V420.0 Z" fill="#e66767"/>
+<text x="145.5" y="351.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">4.1</text>
+<path d="M170.5,420.0 V367.8 Q170.5,364.8 173.5,364.8 H201.5 Q204.5,364.8 204.5,367.8 V420.0 Z" fill="#94928a"/>
+<text x="187.5" y="356.8" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">3.7</text>
+<path d="M212.5,420.0 V370.7 Q212.5,367.7 215.5,367.7 H243.5 Q246.5,367.7 246.5,370.7 V420.0 Z" fill="#3987e5"/>
+<text x="229.5" y="359.7" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">3.5</text>
+<text x="188.5" y="446.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#f3f2ee" text-anchor="middle">2021</text>
+<path d="M377.5,420.0 V148.8 Q377.5,145.8 380.5,145.8 H408.5 Q411.5,145.8 411.5,148.8 V420.0 Z" fill="#e66767"/>
+<text x="394.5" y="137.8" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">18.3</text>
+<path d="M419.5,420.0 V176.1 Q419.5,173.1 422.5,173.1 H450.5 Q453.5,173.1 453.5,176.1 V420.0 Z" fill="#94928a"/>
+<text x="436.5" y="165.1" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">16.5</text>
+<path d="M461.5,420.0 V199.7 Q461.5,196.7 464.5,196.7 H492.5 Q495.5,196.7 495.5,199.7 V420.0 Z" fill="#3987e5"/>
+<text x="478.5" y="188.7" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">14.9</text>
+<text x="437.5" y="446.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#f3f2ee" text-anchor="middle">2022</text>
+<path d="M626.5,420.0 V289.2 Q626.5,286.2 629.5,286.2 H657.5 Q660.5,286.2 660.5,289.2 V420.0 Z" fill="#e66767"/>
+<text x="643.5" y="278.2" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">8.9</text>
+<path d="M668.5,420.0 V303.1 Q668.5,300.1 671.5,300.1 H699.5 Q702.5,300.1 702.5,303.1 V420.0 Z" fill="#94928a"/>
+<text x="685.5" y="292.1" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">8.0</text>
+<path d="M710.5,420.0 V339.9 Q710.5,336.9 713.5,336.9 H741.5 Q744.5,336.9 744.5,339.9 V420.0 Z" fill="#3987e5"/>
+<text x="727.5" y="328.9" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">5.5</text>
+<text x="686.5" y="446.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#f3f2ee" text-anchor="middle">2023</text>
+<path d="M875.5,420.0 V387.2 Q875.5,384.2 878.5,384.2 H906.5 Q909.5,384.2 909.5,387.2 V420.0 Z" fill="#e66767"/>
+<text x="892.5" y="376.2" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">2.4</text>
+<path d="M917.5,420.0 V384.3 Q917.5,381.3 920.5,381.3 H948.5 Q951.5,381.3 951.5,384.3 V420.0 Z" fill="#94928a"/>
+<text x="934.5" y="373.3" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">2.6</text>
+<path d="M959.5,420.0 V385.5 Q959.5,382.5 962.5,382.5 H990.5 Q993.5,382.5 993.5,385.5 V420.0 Z" fill="#3987e5"/>
+<text x="976.5" y="374.5" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#f3f2ee" text-anchor="middle">2.5</text>
+<text x="935.5" y="446.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#f3f2ee" text-anchor="middle">2024</text>
+<rect x="64" y="466" width="12" height="12" rx="2" fill="#e66767"/>
+<text x="82.0" y="477.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="start">cheapest third</text>
+<rect x="214" y="466" width="12" height="12" rx="2" fill="#94928a"/>
+<text x="232.0" y="477.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="start">middle third</text>
+<rect x="364" y="466" width="12" height="12" rx="2" fill="#3987e5"/>
+<text x="382.0" y="477.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="start">dearest third</text>
+<text x="64.0" y="516.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="12" font-weight="400" fill="#9a988f" text-anchor="start">In 2024, with food inflation back near 2%, the three thirds rose together: the method does not invent a gap when there is none.</text>
+</svg>

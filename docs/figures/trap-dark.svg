@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 410" width="1120" height="410" role="img" aria-label="How you rank the prices decides the answer, unless you rank them fairly">
+<rect width="1120" height="410" fill="#161614"/>
+<text x="64.0" y="44.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#f3f2ee" text-anchor="start">How you rank the prices decides the answer, unless you rank them fairly</text>
+<text x="64.0" y="70.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#c3c2b7" text-anchor="start">Rise from January 2021 to December 2024 of the cheapest and dearest thirds, three ways of deciding which third a price is in</text>
+<line x1="314.0" y1="110.0" x2="314.0" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="314.0" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">0%</text>
+<line x1="420.6" y1="110.0" x2="420.6" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="420.6" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">10%</text>
+<line x1="527.1" y1="110.0" x2="527.1" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="527.1" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">20%</text>
+<line x1="633.7" y1="110.0" x2="633.7" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="633.7" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">30%</text>
+<line x1="740.3" y1="110.0" x2="740.3" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="740.3" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">40%</text>
+<line x1="846.9" y1="110.0" x2="846.9" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="846.9" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">50%</text>
+<line x1="953.4" y1="110.0" x2="953.4" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="953.4" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">60%</text>
+<line x1="1060.0" y1="110.0" x2="1060.0" y2="320.0" stroke="#2a2a27" stroke-width="1.0"/>
+<text x="1060.0" y="342.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="400" fill="#9a988f" text-anchor="middle">70%</text>
+<text x="64.0" y="145.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f3f2ee" text-anchor="start">Ranked on January's price</text>
+<line x1="456.4" y1="140.0" x2="926.7" y2="140.0" stroke="#3d3d3a" stroke-width="3"/>
+<circle cx="926.7" cy="140.0" r="8.0" fill="#161614"/>
+<circle cx="926.7" cy="140.0" r="6.0" fill="#e66767"/>
+<circle cx="456.4" cy="140.0" r="8.0" fill="#161614"/>
+<circle cx="456.4" cy="140.0" r="6.0" fill="#3987e5"/>
+<text x="926.7" y="126.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#e66767" text-anchor="middle">cheap 57%</text>
+<text x="456.4" y="164.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#3987e5" text-anchor="middle">dear 13%</text>
+<text x="64.0" y="215.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f3f2ee" text-anchor="start">Ranked on this month's price</text>
+<line x1="535.7" y1="210.0" x2="864.8" y2="210.0" stroke="#3d3d3a" stroke-width="3"/>
+<circle cx="535.7" cy="210.0" r="8.0" fill="#161614"/>
+<circle cx="535.7" cy="210.0" r="6.0" fill="#e66767"/>
+<circle cx="864.8" cy="210.0" r="8.0" fill="#161614"/>
+<circle cx="864.8" cy="210.0" r="6.0" fill="#3987e5"/>
+<text x="535.7" y="196.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#e66767" text-anchor="middle">cheap 21%</text>
+<text x="864.8" y="234.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#3987e5" text-anchor="middle">dear 52%</text>
+<text x="64.0" y="285.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#f3f2ee" text-anchor="start">Ranked on both (what I use)</text>
+<line x1="631.8" y1="280.0" x2="724.8" y2="280.0" stroke="#3d3d3a" stroke-width="3"/>
+<circle cx="724.8" cy="280.0" r="8.0" fill="#161614"/>
+<circle cx="724.8" cy="280.0" r="6.0" fill="#e66767"/>
+<circle cx="631.8" cy="280.0" r="8.0" fill="#161614"/>
+<circle cx="631.8" cy="280.0" r="6.0" fill="#3987e5"/>
+<text x="724.8" y="266.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#e66767" text-anchor="middle">cheap 39%</text>
+<text x="631.8" y="304.0" font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="#3987e5" text-anchor="middle">dear 30%</text>
+<text x="64.0" y="386.0" font-family="'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="12" font-weight="400" fill="#9a988f" text-anchor="start">A price that is low one month by chance tends to rise back. Ranking on either month alone turns that into a gap; ranking on the two together cancels it.</text>
+</svg>

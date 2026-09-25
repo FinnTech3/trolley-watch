@@ -1,8 +1,10 @@
 """Plain names for the ONS's item descriptions, and the groups they belong to.
 
 The ONS writes "LGE LOAF-WHTE-UNSLED-750-800G". The app and the figures say
-"White loaf, unsliced". Every name here is my reading of the description; the
-description itself is kept alongside it in the app's data.
+"White loaf, unsliced". Every name here is my reading of the description, and
+the description itself is kept alongside it in the app's data. Where the ONS
+only numbers an item ("CHOCOLATE 4", "BREAKFAST CEREAL 1") the name keeps the
+number rather than guess what it stands for.
 """
 
 from __future__ import annotations
@@ -31,8 +33,8 @@ NAMES = {
     "210204": "Dried pasta",
     "210211": "Corn snack",
     "210212": "Basmati rice",
-    "210213": "Breakfast cereal (first)",
-    "210214": "Breakfast cereal (second)",
+    "210213": "Breakfast cereal, ONS item 1",
+    "210214": "Breakfast cereal, ONS item 2",
     "210215": "Cereal bar",
     "210216": "Porridge oats",
     "210217": "Microwave rice",
@@ -109,15 +111,15 @@ NAMES = {
     "212106": "Jam",
     "212107": "Honey",
     "212202": "Mints",
-    "212211": "Chocolate bar (first)",
+    "212211": "Chocolate, ONS item 4",
     "212214": "Fruit pastilles",
     "212217": "Chewing gum",
     "212218": "Box of chocolates",
-    "212222": "Chocolate bar (second)",
+    "212222": "Chocolate, ONS item 10",
     "212223": "Bag of chocolate sweets",
     "212224": "Bag of sweets",
     "212225": "Large chocolate bar",
-    "212226": "Chocolate bar (third)",
+    "212226": "Chocolate, ONS item 12",
     "212402": "Crisps, single bag",
     "212404": "Crisps multipack",
     "212405": "Frozen chips",
