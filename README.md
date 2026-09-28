@@ -7,10 +7,10 @@ and followed each third through the food price shock.
 
 **Check your own trolley:** [finntech3.github.io/trolley-watch](https://finntech3.github.io/trolley-watch/)
 
-**Why I built this.** "Switch to the budget range" was standard advice
-through the food price shock, and I wanted to know if it still worked as
-well as it used to, or whether the cheap stuff had quietly become a worse
-deal too. The 2.2 million prices had the answer, once I made them add up.
+**Why I built this.** The ONS publishes 2.2 million individual prices behind
+its headline food figure, and almost nobody outside the department looks
+past the headline. I did, mostly to check whether "switch to the budget
+range" was still good advice or just a habit nobody had rechecked.
 
 ## The finding
 

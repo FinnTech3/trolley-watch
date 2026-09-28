@@ -149,9 +149,8 @@ export function App() {
         {d && items && (
           <aside className="signoff">
             <p>
-              I built this because "switch to the budget range" kept getting repeated as if it still worked as well as
-              it used to, and nobody had actually checked. If your own trolley told you something worth knowing, I've
-              got more like it at <a href={PORTFOLIO}>finn-lakin-portfolio.netlify.app</a>.
+              That's what your own trolley actually did, not the average one everyone quotes. More like it at{" "}
+              <a href={PORTFOLIO}>finn-lakin-portfolio.netlify.app</a>.
             </p>
           </aside>
         )}
