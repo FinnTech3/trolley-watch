@@ -7,6 +7,11 @@ and followed each third through the food price shock.
 
 **Check your own trolley:** [finntech3.github.io/trolley-watch](https://finntech3.github.io/trolley-watch/)
 
+**Why I built this.** "Switch to the budget range" was standard advice
+through the food price shock, and I wanted to know if it still worked as
+well as it used to, or whether the cheap stuff had quietly become a worse
+deal too. The 2.2 million prices had the answer, once I made them add up.
+
 ## The finding
 
 **Prices at the cheap end of the shelf rose fastest.** From January 2021 to
@@ -36,10 +41,12 @@ the whole country instead of within each region and shop type gives 38.9% and
 29.9%.
 
 **What I think this means.** The official figure was right about food as a
-whole and wrong about anyone who buys the cheapest version of everything.
-"Switch to the budget range" was the standard advice through the shock, and
-switching still saved money, but less than it used to: the cheapest third now
-costs 6.7% more, relative to the dearest, than it did in January 2021.
+whole and wrong about anyone who buys the cheapest version of everything, which
+is a strange thing for a cost of living index to get wrong given who actually
+needs one. "Switch to the budget range" was the standard advice through the
+shock, and switching still saved money, but less than it used to: the cheapest
+third now costs 6.7% more, relative to the dearest, than it did in January
+2021. Nobody adjusted the advice when the gap it relied on started closing.
 
 This is not a new claim. It was argued loudly in 2022, and the ONS answered it
 with an experimental index of the lowest prices of 30 items on supermarket

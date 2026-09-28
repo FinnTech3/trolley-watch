@@ -16,6 +16,7 @@ import { ThirdsChart } from "./ThirdsChart";
 import { useCountUp } from "./hooks";
 
 const REPO = "https://github.com/FinnTech3/trolley-watch";
+const PORTFOLIO = "https://finn-lakin-portfolio.netlify.app/";
 
 const WHERE: Record<Third, string> = {
   cheap: "the cheap end",
@@ -144,6 +145,16 @@ export function App() {
         </div>
 
         {d && items && <Sections d={d} third={third} items={items} setItems={setItems} />}
+
+        {d && items && (
+          <aside className="signoff">
+            <p>
+              I built this because "switch to the budget range" kept getting repeated as if it still worked as well as
+              it used to, and nobody had actually checked. If your own trolley told you something worth knowing, I've
+              got more like it at <a href={PORTFOLIO}>finn-lakin-portfolio.netlify.app</a>.
+            </p>
+          </aside>
+        )}
       </main>
 
       <footer>
