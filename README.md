@@ -135,6 +135,13 @@ chips 55%, eggs 53%, semi-skimmed milk 48%, potatoes 47%.
   carry on from their old code at the January the new one starts, the way the
   CPI chains its own basket.
 
+- **The shelves.** The 43 everyday items are laid out cheapest rise on the
+  left, dearest on the right, each drawn as one of eight shapes chosen by the
+  ONS's own food group, and each carrying what it costs for every £100 it cost
+  in January 2021. The month can be scrubbed, so the tags flick through all 48.
+  Tapping an item puts it in the trolley, and the till prints that trolley's
+  figure beside the published one.
+
 More on each choice in [docs/DESIGN-DECISIONS.md](docs/DESIGN-DECISIONS.md).
 Every source, address and checksum is in [docs/SOURCES.md](docs/SOURCES.md).
 

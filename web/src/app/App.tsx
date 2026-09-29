@@ -1,22 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { gbp, month, pct } from "../lib/format";
-import {
-  type Third,
-  type TrolleyFile,
-  official,
-  pushedMost,
-  readChoice,
-  rise,
-  trolleyPath,
-  writeChoice,
-} from "../lib/trolley";
+import { type Third, type TrolleyFile, official, readChoice, rise, trolleyPath, writeChoice } from "../lib/trolley";
 import { ItemsStrip } from "./ItemsStrip";
+import { Receipt } from "./Receipt";
 import { ShareCard } from "./ShareCard";
+import { Shelf } from "./Shelf";
+import { Monogram } from "./series/Monogram";
+import { Note } from "./series/Note";
+import { SeriesStrip } from "./series/SeriesStrip";
+import { PORTFOLIO } from "./series/series";
 import { ThirdsChart } from "./ThirdsChart";
 import { useCountUp } from "./hooks";
 
 const REPO = "https://github.com/FinnTech3/trolley-watch";
-const PORTFOLIO = "https://finn-lakin-portfolio.netlify.app/";
 
 const WHERE: Record<Third, string> = {
   cheap: "the cheap end",
@@ -85,18 +81,18 @@ export function App() {
     history.replaceState(null, "", `${location.pathname}${writeChoice({ third, items }, d.everyday)}`);
   }, [d, third, items]);
 
+  const toggle = (id: string) =>
+    setItems((old) => (old === null ? old : old.includes(id) ? old.filter((i) => i !== id) : [...old, id]));
+
   return (
     <div className="wrap">
-      <header>
-        <div className="mark">
-          <span className="ladder" aria-hidden="true">
-            {[16, 12, 8].map((h, i) => (
-              <i key={i} className={i === 0 ? "d" : undefined} style={{ height: h }} />
-            ))}
-          </span>
-          <b>Trolley watch</b>
-          <small>whose food inflation?</small>
-        </div>
+      <header className="bar">
+        <Monogram />
+        <p className="series">
+          A series of six by <b>Finn Lakin</b>
+          <br />
+          No. 4 · Food prices
+        </p>
         <button
           className="toggle"
           type="button"
@@ -108,52 +104,76 @@ export function App() {
       </header>
 
       <main>
-        <div className="hero">
-          <h1>Did your end of the shelf rise faster than food inflation?</h1>
-          <p className="lede">
-            Official food inflation, January 2021 to December 2024, was 33.3%. I rebuilt it from the 2.2 million prices
-            the ONS's collectors wrote down, then split every item's prices into the cheapest, middle and dearest third.
-          </p>
-          <div className="controls">
-            <div className="field">
-              <span id="shelf">Where on the shelf do you usually buy?</span>
-              <div className="segmented" role="group" aria-labelledby="shelf">
-                {(
-                  [
-                    ["cheap", "The cheapest"],
-                    ["middle", "The middle"],
-                    ["dear", "The dearest"],
-                  ] as [Third, string][]
-                ).map(([t, text]) => (
-                  <button key={t} type="button" aria-pressed={third === t} onClick={() => setThird(t)}>
-                    {text}
-                  </button>
-                ))}
+        <div className="stage">
+          <div className="head">
+            <h1>
+              Whose <em>food inflation?</em>
+            </h1>
+            <p className="dek">
+              Forty-three everyday items, cheapest rise on the left, dearest on the right, each with what it costs for
+              every £100 it cost in January 2021. Put your own shopping in the trolley and the till prints your figure.
+            </p>
+          </div>
+
+          <Note>
+            The headline said food was up a third and my shopping did not feel like a third. So I rebuilt the index from
+            the 2.2 million prices the collectors wrote down, and put the shelves back together item by item.
+          </Note>
+
+          <figure className="shelf-fig">
+            {d && items ? (
+              <Shelf d={d} chosen={new Set(items)} onToggle={toggle} />
+            ) : (
+              <p className="waiting">
+                {failed ? "The data did not load. Refresh the page to try again." : "Stacking the shelves"}
+              </p>
+            )}
+          </figure>
+
+          <div className="side">
+            {d && items && (
+              <Receipt d={d} items={items} onClear={() => setItems([])} onEveryday={() => setItems([...d.everyday])} />
+            )}
+            <div className="controls">
+              <div className="field">
+                <span id="shelf">Where on the shelf do you usually buy?</span>
+                <div className="segmented" role="group" aria-labelledby="shelf">
+                  {(
+                    [
+                      ["cheap", "The cheapest"],
+                      ["middle", "The middle"],
+                      ["dear", "The dearest"],
+                    ] as [Third, string][]
+                  ).map(([t, text]) => (
+                    <button key={t} type="button" aria-pressed={third === t} onClick={() => setThird(t)}>
+                      {text}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className={d ? "answer" : "answer skeleton"} aria-live="polite">
-          {failed ? (
-            <p>The data did not load. Refresh the page to try again.</p>
-          ) : d ? (
-            <Answer d={d} third={third} />
-          ) : (
-            <p>Loading 2.2 million prices, cut down to one small file</p>
-          )}
+            <div className={d ? "answer" : "answer skeleton"} aria-live="polite">
+              {failed ? (
+                <p>The data did not load. Refresh the page to try again.</p>
+              ) : d ? (
+                <Answer d={d} third={third} />
+              ) : (
+                <p>Loading 2.2 million prices, cut down to one small file</p>
+              )}
+            </div>
+          </div>
         </div>
 
         {d && items && <Sections d={d} third={third} items={items} setItems={setItems} />}
 
         {d && items && (
           <aside className="signoff">
-            <p>
-              That's what your own trolley actually did, not the average one everyone quotes. More like it at{" "}
-              <a href={PORTFOLIO}>finn-lakin-portfolio.netlify.app</a>.
-            </p>
+            <p>That's what your own trolley actually did, not the average one everyone quotes.</p>
           </aside>
         )}
+
+        <SeriesStrip here="trolley-watch" />
       </main>
 
       <footer>
@@ -167,8 +187,9 @@ export function App() {
           December 2024, the last month whose indices can be rebuilt from the quotes.
         </p>
         <p>
-          Built by Finn Lakin. The method, the code and every check are at{" "}
-          <a href={REPO}>github.com/FinnTech3/trolley-watch</a>. No cookies, no tracking.
+          Made by Finn Lakin. The method, the code and every check are at{" "}
+          <a href={REPO}>github.com/FinnTech3/trolley-watch</a>, and the rest of my work is at{" "}
+          <a href={PORTFOLIO}>finn-lakin-portfolio.netlify.app</a>. No cookies, no tracking.
         </p>
       </footer>
     </div>
@@ -234,11 +255,9 @@ function Sections({
   const food = rise(off);
   const path = useMemo(() => trolleyPath(d, items), [d, items]);
   const mine = path.length ? rise(path) : null;
-  const top = useMemo(() => pushedMost(d, items), [d, items]);
   const chosen = useMemo(() => new Set(items), [items]);
   const [all, setAll] = useState(false);
   const [filter, setFilter] = useState("");
-  const shown = useCountUp(mine);
 
   const byGroup = useMemo(() => {
     const everyday = new Set(d.everyday);
@@ -290,29 +309,10 @@ function Sections({
       </section>
 
       <section>
-        <h2>Your trolley</h2>
+        <h2>Every item priced, and where your trolley sits</h2>
         <p className="sub">
-          Tick what you buy. Each item is the ONS's own index for it, and each counts as much as households spend on it.
-          One item's thirds are too noisy to show on their own, so these are all its prices, not one end.
+          {`Each of the ${d.items.length} items as a dot at its rise, with the ones in your trolley lit. The shelves above hold the ${d.everyday.length} everyday ones; everything else the ONS prices is here, and you can add any of it.`}
         </p>
-        <div className="trolley-result" aria-live="polite">
-          {mine === null ? (
-            <p>Your trolley is empty. Tick a few things you buy.</p>
-          ) : (
-            <>
-              <p className="big">
-                <span className="num t-you">{pct(shown ?? mine)}</span>
-                <span className="unit">{`your trolley of ${items.length} ${items.length === 1 ? "item" : "items"}, ${month(d.months[0]!)} to ${month(d.months[d.months.length - 1]!)}`}</span>
-              </p>
-              <p className="context">
-                {`£100 of it in ${month(d.months[0]!)} cost ${gbp(path[path.length - 1]!)} by ${month(d.months[d.months.length - 1]!)}.`}
-                {top && top.share > 0 && items.length > 1
-                  ? ` The biggest push came from ${top.item.name.toLowerCase()}: ${pct(rise(top.item.path), 0).slice(1)} dearer, and ${Math.round(top.share * 100)}% of the rise.`
-                  : ""}
-              </p>
-            </>
-          )}
-        </div>
         <div className="fig">
           <ItemsStrip items={d.items} chosen={chosen} trolley={mine} food={food} />
         </div>

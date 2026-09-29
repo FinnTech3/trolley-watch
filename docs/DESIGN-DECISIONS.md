@@ -115,3 +115,25 @@ ends where the checks do.
 
 The charts are lines and bars. Drawn as SVG directly they resize to the
 screen so their text stays readable on a phone, and the page stays small.
+
+## Why eight drawn shapes rather than 43 pictures?
+
+Forty-three separate illustrations would be forty-three styles, and the eye
+would read the drawings instead of the prices. Eight shapes, one per ONS food
+group, make the shelf one family: a tin is a tin whether it holds tuna or
+tomatoes. The thing that varies between items is the thing that matters, which
+is the colour and the number on the tag.
+
+## Why colour the items by rank, not by how much they rose?
+
+Olive oil is up 157% and the next dearest is up 77%. On a scale of the actual
+rises, olive oil would be the only coloured thing on the shelf and everything
+else would sit in a grey huddle. Colouring by rank, cheapest rise to dearest,
+spreads the shelf evenly and leaves the exact figures to the tags, where they
+can be read.
+
+## Why does the trolley start full?
+
+Because an empty trolley has no answer in it, and the page is meant to answer
+before it asks. The 43 everyday items are the trolley the write-up quotes, so
+the page opens on that figure, and emptying it is one tap.
