@@ -48,7 +48,9 @@ export function Receipt({ d, items, onClear, onEveryday }: Props) {
         </p>
       ) : (
         <>
-          <ul className="lines">
+          {/* taller than its box, so the browser makes it a keyboard scroll
+              region; it needs a name to be worth landing on */}
+          <ul className="lines" tabIndex={0} aria-label={`The ${chosen.length} items in your trolley`}>
             {chosen
               .slice()
               .sort((a, b) => rise(b.path) - rise(a.path))
