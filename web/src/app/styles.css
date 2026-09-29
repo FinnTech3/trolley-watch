@@ -5,6 +5,7 @@
   --ink-2: #474945;
   --muted: #63665f;
   --rule: #d5d3cb;
+  --edge: #8a8570;
   --grid: #e6e4dc;
   --rest: #8d8f86;
   --you: #a8202c;
@@ -41,6 +42,7 @@
     --ink-2: #c6c7c0;
     --muted: #9b9d95;
     --rule: #2e3238;
+    --edge: #636c78;
     --grid: #23272c;
     --rest: #6a6d66;
     --you: #ff8a90;
@@ -72,6 +74,7 @@
   --ink-2: #c6c7c0;
   --muted: #9b9d95;
   --rule: #2e3238;
+  --edge: #636c78;
   --grid: #23272c;
   --rest: #6a6d66;
   --you: #ff8a90;
@@ -196,7 +199,7 @@ select {
   margin-left: auto;
   flex: none;
   background: none;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 999px;
   padding: 6px 12px;
   font-family: var(--mono);
@@ -262,7 +265,7 @@ h1 em {
 .btn.quiet {
   background: var(--panel);
   color: var(--ink);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
 }
 
 .side {
@@ -446,7 +449,7 @@ h1 em {
 
 .council-pick select {
   background: var(--panel);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 8px;
   padding: 8px 10px;
   max-width: 100%;
@@ -752,7 +755,7 @@ h2 {
 .field select {
   width: 100%;
   background: var(--panel);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 8px;
   padding: 11px 12px;
   font-size: 17px;
@@ -761,7 +764,7 @@ h2 {
 
 .segmented {
   display: inline-flex;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 999px;
   padding: 3px;
   background: var(--panel);
@@ -889,7 +892,7 @@ h2 {
 .picker-bar input {
   flex: 1 1 220px;
   min-width: 0;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--edge);
   border-radius: 10px;
   background: var(--panel);
   padding: 10px 12px;
