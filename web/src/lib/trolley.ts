@@ -127,3 +127,16 @@ export function writeChoice(c: Choice, everyday: string[]): string {
   const s = q.toString();
   return s ? `?${s}` : "";
 }
+
+/**
+ * True when a parsed JSON body looks like the trolley file, rather than an
+ * error page or a stale deploy's wrong file. readChoice already touches the
+ * shape in the load path, so a bad body throws there today; this states the
+ * requirement rather than leaving it to that accident, and keeps the six
+ * consistent. It checks only the top-level fields the page reads.
+ */
+export function looksLikeTrolleyFile(x: unknown): x is TrolleyFile {
+  if (typeof x !== "object" || x === null) return false;
+  const f = x as Partial<TrolleyFile>;
+  return Array.isArray(f.months) && Array.isArray(f.items) && Array.isArray(f.everyday);
+}

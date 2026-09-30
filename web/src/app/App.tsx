@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { gbp, month, pct } from "../lib/format";
-import { type Third, type TrolleyFile, official, readChoice, rise, trolleyPath, writeChoice } from "../lib/trolley";
+import { type Third, type TrolleyFile, looksLikeTrolleyFile, official, readChoice, rise, trolleyPath, writeChoice } from "../lib/trolley";
 import { ItemsStrip } from "./ItemsStrip";
 import { Receipt } from "./Receipt";
 import { ShareCard } from "./ShareCard";
@@ -68,8 +68,9 @@ export function App() {
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/trolley.json`)
-      .then((r) => r.json() as Promise<TrolleyFile>)
+      .then((r) => r.json())
       .then((file) => {
+        if (!looksLikeTrolleyFile(file)) throw new Error("unexpected data shape");
         setItems(readChoice(location.search, file).items);
         setD(file);
       })

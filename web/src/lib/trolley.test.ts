@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { extremes, official, pushedMost, readChoice, rise, trolleyPath, type TrolleyFile, writeChoice } from "./trolley";
+import { extremes, looksLikeTrolleyFile, official, pushedMost, readChoice, rise, trolleyPath, type TrolleyFile, writeChoice } from "./trolley";
 
 const d = JSON.parse(readFileSync(new URL("../../public/data/trolley.json", import.meta.url), "utf-8")) as TrolleyFile;
 
@@ -78,5 +78,13 @@ describe("what the shelf says about a month", () => {
       if (low.id === shelf[0]!.id && high.id === shelf[shelf.length - 1]!.id) ends++;
     }
     expect(ends).toBeLessThan(d.months.length);
+  });
+});
+
+describe("the load guard", () => {
+  it("accepts the real file and rejects anything that is not it", () => {
+    expect(looksLikeTrolleyFile(d)).toBe(true);
+    for (const bad of [null, undefined, {}, [], [1, 2, 3], { months: [] }, { items: {} }, "text", 5])
+      expect(looksLikeTrolleyFile(bad)).toBe(false);
   });
 });
