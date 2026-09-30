@@ -28,7 +28,12 @@ MONO = "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
 
 # Red for the cheapest third, blue for the dearest, grey between: red and blue
 # stay distinct under protanopia and deuteranopia, and all three clear 3:1
-# against both backgrounds.
+# against both backgrounds. The one close pair is the cheapest against the
+# middle on the dark background under protanopia, where the red desaturates
+# towards the grey: about 11 of perceptual distance rather than the 12 the
+# others clear. Every alternative either outshines the two series that matter
+# or sits on the 3:1 floor, and each line is named in the picture rather than
+# left to its colour, so it stays.
 LIGHT = {"bg": "#fbfaf7", "ink": "#111110", "dim": "#52514e", "muted": "#6b6a65",
          "grid": "#e6e4dc", "axis": "#c3c2b7", "rest": "#cfccc3",
          "cheap": "#d63f3e", "middle": "#86847c", "dear": "#2a78d6"}
