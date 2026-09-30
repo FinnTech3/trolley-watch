@@ -42,6 +42,24 @@ export function rise(path: number[], from = 0, to = path.length - 1): number {
   return path[to]! / path[from]! - 1;
 }
 
+/**
+ * The cheapest and the dearest of `items` in month `m`.
+ *
+ * The shelf is ordered by each item's rise to the latest month, so its two
+ * ends are the two ends of that ordering and nothing more: in most earlier
+ * months neither end is that month's cheapest or dearest. Anything that
+ * describes the month has to ask the month.
+ */
+export function extremes(items: Item[], m: number): { low: Item; high: Item } {
+  let low = items[0]!;
+  let high = items[0]!;
+  for (const it of items) {
+    if (it.path[m]! < low.path[m]!) low = it;
+    if (it.path[m]! > high.path[m]!) high = it;
+  }
+  return { low, high };
+}
+
 /** The published food index, January 2021 = 100. */
 export function official(d: TrolleyFile): number[] {
   return d.published.map((v) => (100 * v) / d.published[0]!);

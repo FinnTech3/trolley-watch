@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { official, pushedMost, readChoice, rise, trolleyPath, type TrolleyFile, writeChoice } from "./trolley";
+import { extremes, official, pushedMost, readChoice, rise, trolleyPath, type TrolleyFile, writeChoice } from "./trolley";
 
 const d = JSON.parse(readFileSync(new URL("../../public/data/trolley.json", import.meta.url), "utf-8")) as TrolleyFile;
 
@@ -52,5 +52,31 @@ describe("the address", () => {
   it("drops what it does not know, and repeats", () => {
     expect(readChoice("?s=cheapest&i=1604.9999.1604", d)).toEqual({ third: "cheap", items: ["211604"] });
     expect(readChoice("?i=", d).items).toEqual([]);
+  });
+});
+
+describe("what the shelf says about a month", () => {
+  // the shelf's own ordering: by rise to the latest month, smallest first
+  const shelf = d.items.filter((i) => d.everyday.includes(i.id)).sort((a, b) => rise(a.path) - rise(b.path));
+
+  it("names that month's cheapest and dearest, in every month", () => {
+    for (let m = 0; m < d.months.length; m++) {
+      const { low, high } = extremes(shelf, m);
+      const vals = shelf.map((i) => i.path[m]!);
+      expect(low.path[m]).toBe(Math.min(...vals));
+      expect(high.path[m]).toBe(Math.max(...vals));
+      expect(low.path[m]).toBeLessThanOrEqual(high.path[m]!);
+    }
+  });
+
+  it("does not mistake the ends of the shelf for them", () => {
+    // if the two were the same thing there would be no need for a function:
+    // in most months neither end of the shelf is that month's extreme
+    let ends = 0;
+    for (let m = 0; m < d.months.length; m++) {
+      const { low, high } = extremes(shelf, m);
+      if (low.id === shelf[0]!.id && high.id === shelf[shelf.length - 1]!.id) ends++;
+    }
+    expect(ends).toBeLessThan(d.months.length);
   });
 });

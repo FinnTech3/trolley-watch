@@ -1,6 +1,6 @@
 import type React from "react";
 import { type ReactNode, useMemo, useState } from "react";
-import { type Item, type TrolleyFile, rise } from "../lib/trolley";
+import { type Item, type TrolleyFile, extremes, rise } from "../lib/trolley";
 import { useWidth } from "./hooks";
 
 interface Props {
@@ -142,7 +142,8 @@ export function Shelf({ d, chosen, onToggle }: Props) {
   const shelfY = (row: number) => T + row * rowH + 58;
 
   const at = (it: Item) => it.path[m]!;
-  const dearest = items[items.length - 1]!;
+  // the shelf's ends are the ends of the rise ordering, not of this month
+  const { low, high } = useMemo(() => extremes(items, m), [items, m]);
   // How far along the shelf an item's rise sits, 0 to 1, by rank rather than
   // by size: one item ran away with it and would flatten everything else.
   const heat = (i: number) => i / (items.length - 1);
@@ -151,7 +152,7 @@ export function Shelf({ d, chosen, onToggle }: Props) {
     <div ref={ref} className="shelf-wrap">
       <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="shelf" role="group" aria-labelledby="shelf-desc">
         <desc id="shelf-desc">
-          {`The ${items.length} everyday items, cheapest rise on the left. In ${monthName(d.months[m]!)} each one costs this much for every £100 it cost in January 2021, from ${Math.round(at(items[0]!))} for ${items[0]!.name.toLowerCase()} to ${Math.round(at(dearest))} for ${dearest.name.toLowerCase()}. ${chosen.size} are in the trolley.`}
+          {`The ${items.length} everyday items, ordered by their rise since January 2021 with the smallest on the left. In ${monthName(d.months[m]!)} each costs this much for every £100 it cost in January 2021: ${Math.round(at(low))} for ${low.name.toLowerCase()} at the cheapest, ${Math.round(at(high))} for ${high.name.toLowerCase()} at the dearest. ${chosen.size} are in the trolley.`}
         </desc>
         {Array.from({ length: shelves }, (_, row) => (
           <line key={row} className="board" x1={L} x2={W - R} y1={shelfY(row)} y2={shelfY(row)} />
